@@ -1,0 +1,163 @@
+/* ]init[ Design System 1.5 – Aussehen nativer Elemente. Setzt tokens.css voraus.
+   Zustände nach den Komponentenvariablen der Figma-Library (button, field, checkbox, radio, toggle, data table, banner, toast). */
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: var(--font-family); font-size: var(--font-size-body); line-height: 1.5;
+  color: var(--text-primary); background: var(--background-default); }
+h1, h2, h3, h4, h5, h6 { font-weight: var(--font-weight-medium); line-height: 1.2; margin: 0 0 var(--spacing-xs); }
+h1 { font-size: var(--font-size-heading-1); } h2 { font-size: var(--font-size-heading-2); }
+h3 { font-size: var(--font-size-heading-3); } h4 { font-size: var(--font-size-heading-4); }
+h5 { font-size: var(--font-size-heading-5); } h6 { font-size: var(--font-size-heading-6); }
+
+/* Fokus */
+:focus-visible { outline: var(--focus-width) solid var(--focus); outline-offset: 2px; border-radius: var(--radius-focus); }
+
+/* Links */
+a { color: var(--text-primary); text-decoration: underline; text-decoration-color: var(--border-default); text-underline-offset: 3px; }
+a:hover { color: var(--text-brand); text-decoration-color: var(--border-brand); }
+
+/* Buttons: ohne Klasse = Sekundär */
+button, .btn-primary, .btn-secondary, .btn-tertiary, .btn-destructive {
+  font: inherit; font-size: var(--font-size-button); font-weight: var(--font-weight-medium);
+  min-height: var(--control-height); padding: 0 var(--spacing-lg); border-radius: var(--radius-button);
+  border: var(--border-width) solid var(--text-secondary); background: var(--text-secondary); color: var(--text-on-color);
+  cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-2xs); text-decoration: none;
+}
+button:hover, button:active { background: var(--background-default); color: var(--text-secondary); }
+.btn-primary { background: var(--background-brand); border-color: var(--border-brand); color: var(--text-on-color); }
+.btn-primary:hover, .btn-primary:active { background: var(--background-default); color: var(--text-brand); }
+.btn-tertiary { background: transparent; border-color: transparent; color: var(--text-brand); }
+.btn-tertiary:hover, .btn-tertiary:active { background: transparent; border-color: var(--border-brand); color: var(--text-brand); }
+.btn-destructive { background: var(--error); border-color: var(--error); color: var(--text-on-color); }
+.btn-destructive:hover, .btn-destructive:active { background: var(--background-default); color: var(--error); }
+button:active, [class^="btn-"]:active { border-width: var(--border-width-active); }
+button:disabled, button:disabled:hover { background: var(--background-strong); border-color: var(--border-disabled); color: var(--text-disabled); cursor: not-allowed; }
+.btn-tertiary:disabled { background: transparent; border-color: transparent; }
+
+/* Felder */
+label { display: block; font-size: var(--font-size-label); color: var(--text-secondary); margin-bottom: var(--spacing-2xs); }
+input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]), select, textarea {
+  width: 100%; font: inherit; font-size: var(--font-size-input); color: var(--text-primary);
+  min-height: var(--control-height); padding: 0 var(--spacing-sm);
+  background: var(--background-muted); border: var(--border-width) solid var(--border-muted); border-radius: var(--radius-field);
+}
+textarea { padding: var(--spacing-xs) var(--spacing-sm); min-height: 140px; resize: vertical; }
+select { appearance: none; padding-right: var(--spacing-3xl);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23121419' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right var(--spacing-sm) center; }
+::placeholder { color: var(--text-placeholder); }
+input:hover, select:hover, textarea:hover, input:focus, select:focus, textarea:focus { border-color: var(--border-brand); }
+[aria-invalid="true"] { border-color: var(--error) !important; }
+input:disabled, select:disabled, textarea:disabled { border-color: var(--border-disabled); color: var(--text-disabled); cursor: not-allowed; }
+input[readonly], textarea[readonly] { background: var(--background-default); border-color: var(--border-read-only); color: var(--text-read-only); }
+.field-hint { display: block; font-size: var(--font-size-support); color: var(--text-secondary); margin-top: var(--spacing-4xs); }
+.field-error { display: block; font-size: var(--font-size-small); color: var(--error); margin-top: var(--spacing-2xs); }
+fieldset { border: 0; padding: 0; margin: 0 0 var(--spacing-xl); min-width: 0; }
+legend { font-size: var(--font-size-heading-6); font-weight: var(--font-weight-medium); padding: 0; margin-bottom: var(--spacing-sm); }
+
+/* Checkbox und Radio */
+input[type=checkbox]:not([role=switch]), input[type=radio] {
+  appearance: none; margin: 0 var(--spacing-2xs) 0 0; vertical-align: middle; cursor: pointer;
+  background: var(--background-default) no-repeat center; border: var(--border-width) solid var(--border-full);
+}
+input[type=checkbox]:not([role=switch]) { width: 16px; height: 16px; border-radius: 1px; }
+input[type=radio] { width: 20px; height: 20px; border-radius: 50%; }
+input[type=checkbox]:not([role=switch]):hover { border-color: #212328; }
+input[type=checkbox]:not([role=switch]):checked { background-color: var(--background-brand); border-color: var(--border-brand);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8'%3E%3Cpath d='M1 4l3 3 5-6' fill='none' stroke='white' stroke-width='1.6'/%3E%3C/svg%3E"); }
+input[type=checkbox]:not([role=switch]):indeterminate { background-color: var(--background-brand); border-color: var(--border-brand);
+  background-image: linear-gradient(white, white); background-size: 8px 2px; }
+input[type=radio]:checked { background: radial-gradient(circle, var(--background-default) 4px, var(--background-brand) 4.5px); border-color: var(--border-brand); }
+input[type=checkbox][aria-invalid="true"], input[type=radio][aria-invalid="true"] { border-color: var(--error); }
+input[type=checkbox]:disabled, input[type=radio]:disabled { background-color: var(--background-strong); border-color: var(--border-default); cursor: not-allowed; }
+label:has(> input[type=checkbox], > input[type=radio]) { display: flex; align-items: center; color: var(--text-primary); font-size: var(--font-size-small); margin-bottom: var(--spacing-xs); cursor: pointer; }
+
+/* Schalter: <input type="checkbox" role="switch"> */
+input[type=checkbox][role=switch] {
+  appearance: none; width: 64px; height: 32px; margin: 0; border-radius: 16px; cursor: pointer; flex: 0 0 64px;
+  background: radial-gradient(circle, var(--background-default) 11px, transparent 12px) no-repeat left center / 32px 32px, var(--background-strong);
+  transition: background-position .15s;
+}
+input[type=checkbox][role=switch]:checked { background-color: var(--background-brand); background-position: right center, 0 0; }
+input[type=checkbox][role=switch]:disabled { opacity: .6; cursor: not-allowed; }
+input[type=checkbox][role=switch][aria-invalid="true"] { background-color: var(--error); }
+
+/* Tabellen */
+table { width: 100%; border-collapse: collapse; font-size: var(--font-size-small); background: var(--background-default); }
+th, td { text-align: left; padding: var(--spacing-sm); border-bottom: var(--border-width) solid rgb(19 21 24 / 0.1); }
+th { font-weight: var(--font-weight-medium); background: var(--background-muted); }
+tbody tr:hover { background: rgb(19 21 24 / 0.1); }
+table.is-striped tbody tr:nth-child(even) { background: var(--background-muted); }
+tr[aria-selected="true"] { background: var(--background-brand-pale); }
+
+/* Banner */
+.banner { display: flex; gap: var(--spacing-sm); padding: var(--spacing-sm) var(--spacing-md); margin-bottom: var(--spacing-lg);
+  background: var(--background-muted); color: var(--text-primary); font-size: var(--font-size-small); }
+.banner.is-success { background: var(--success-soft); }
+.banner.is-warning { background: var(--warning-soft); }
+.banner.is-error { background: var(--error-soft); }
+.banner strong { display: block; font-weight: var(--font-weight-medium); }
+
+/* Toast */
+.toast { position: fixed; left: 50%; bottom: var(--spacing-xl); transform: translateX(-50%);
+  padding: var(--spacing-sm) var(--spacing-lg); background: var(--background-brand); color: var(--text-on-color); font-size: var(--font-size-small); }
+.toast.is-success { background: var(--success); } .toast.is-warning { background: var(--warning); } .toast.is-error { background: var(--error); }
+
+/* ---- Erweiterung: Dialog, Akkordeon, Tabs, Fortschritt, Schrittanzeige ---- */
+
+/* Dialog: <dialog> mit .dialog-close, Überschrift, Inhalt, .dialog-actions (Library: Dialog 504 / Modal 680) */
+dialog { width: min(504px, calc(100vw - 2 * var(--spacing-md))); max-height: calc(100vh - 2 * var(--spacing-md)); overflow: auto;
+  padding: var(--spacing-xl); border: 0; border-radius: 4px; background: var(--background-default); color: var(--text-primary); }
+dialog.is-large { width: min(680px, calc(100vw - 2 * var(--spacing-md))); }
+dialog::backdrop { background: var(--background-overlay); }
+dialog h2 { font-size: var(--font-size-heading-5); padding-right: var(--spacing-3xl); }
+.dialog-close, .control-button { position: relative; width: 48px; min-height: 48px; height: 48px; padding: 0; border: var(--border-width) solid transparent;
+  border-radius: var(--radius-button); background: rgb(19 21 24 / 0.05); color: var(--text-secondary); font-size: 20px; line-height: 1; }
+.dialog-close:hover, .control-button:hover { background: rgb(19 21 24 / 0.05); color: var(--text-brand); border-color: var(--border-brand); }
+.dialog-close { position: absolute; top: var(--spacing-xl); right: var(--spacing-xl); }
+.dialog-actions { display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-xl); }
+.dialog-actions > * { flex: 1 1 0; }
+@media (max-width: 767px) { .dialog-actions { flex-direction: column-reverse; } }
+
+/* Akkordeon: <details><summary>Titel</summary>Inhalt</details> */
+details { border-bottom: var(--border-width) solid var(--border-deep); }
+summary { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-sm);
+  padding: var(--spacing-lg) 0; cursor: pointer; font-size: var(--font-size-heading-5); font-weight: var(--font-weight-medium); color: var(--text-primary); }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: ""; flex: 0 0 48px; height: 48px; border-radius: var(--radius-button); background: rgb(19 21 24 / 0.05) no-repeat center / 16px 10px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='10'%3E%3Cpath d='M1 1l7 7 7-7' fill='none' stroke='%235e6166' stroke-width='1.6'/%3E%3C/svg%3E"); transition: transform .15s; }
+summary:hover, details[open] > summary { color: var(--text-brand); }
+summary:hover::after, details[open] > summary::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='10'%3E%3Cpath d='M1 1l7 7 7-7' fill='none' stroke='%235656a4' stroke-width='1.6'/%3E%3C/svg%3E"); }
+details[open] > summary::after { transform: rotate(180deg); }
+details > :not(summary) { margin-top: 0; }
+details[open] { padding-bottom: var(--spacing-lg); }
+
+/* Tabs: <div role="tablist" class="tabs"><button role="tab" aria-selected="true">…</button></div> */
+.tabs { display: flex; gap: 0; overflow-x: auto; border-bottom: var(--border-width) solid rgb(19 21 24 / 0.1); margin-bottom: var(--spacing-lg); }
+.tabs [role=tab] { min-height: auto; padding: var(--spacing-sm); background: transparent; color: var(--text-secondary); border: 0; border-radius: 0;
+  border-bottom: 3px solid transparent; margin-bottom: -1px; font-size: var(--font-size-small); font-weight: var(--font-weight-medium); white-space: nowrap; }
+.tabs [role=tab]:hover { background: transparent; color: var(--text-primary); border-bottom-color: var(--border-full); }
+.tabs [role=tab][aria-selected="true"] { color: var(--text-brand); border-bottom-color: var(--border-brand); }
+.tabs [role=tab]:disabled { background: transparent; color: var(--text-disabled); border-bottom-color: transparent; }
+
+/* Fortschritt: <progress value="23" max="100"></progress> mit optionalem .progress-label */
+progress { appearance: none; display: block; width: 100%; height: 4px; border: 0; background: var(--background-strong); color: var(--background-brand); }
+progress::-webkit-progress-bar { background: var(--background-strong); }
+progress::-webkit-progress-value { background: var(--background-brand); }
+progress::-moz-progress-bar { background: var(--background-brand); }
+.progress-label { display: block; margin-top: var(--spacing-2xs); font-size: 14px; color: var(--text-secondary); }
+
+/* Schrittanzeige für Antragsstrecken (eigene Ableitung, in der Library noch nicht vorhanden):
+   <ol class="steps"><li class="is-done">…</li><li aria-current="step">…</li><li>…</li></ol> */
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.steps li { counter-increment: step; display: flex; align-items: center; gap: var(--spacing-xs); padding: var(--spacing-xs) 0; font-size: var(--font-size-small); color: var(--text-secondary); }
+.steps li::before { content: counter(step); flex: 0 0 32px; height: 32px; display: grid; place-items: center; border-radius: 50%;
+  border: var(--border-width) solid var(--border-strong); background: var(--background-default); font-weight: var(--font-weight-medium); }
+.steps li[aria-current="step"] { color: var(--text-primary); font-weight: var(--font-weight-medium); }
+.steps li[aria-current="step"]::before { background: var(--background-brand); border-color: var(--border-brand); color: var(--text-on-color); }
+.steps li.is-done::before { content: "✓"; background: var(--background-brand-pale); border-color: var(--border-brand); color: var(--text-brand); }
+.steps.is-horizontal { display: flex; gap: var(--spacing-md); overflow-x: auto; }
+.steps.is-horizontal li { flex: 0 0 auto; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

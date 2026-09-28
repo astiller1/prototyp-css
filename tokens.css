@@ -1,0 +1,66 @@
+/* ]init[ Design System 1.5 – Tokens. Quelle: Figma-Library, ausgelesen 27.09.2026.
+   Namen folgen den Figma-Variablen. Schrift: Fira Sans als Ersatz für Fago Offc Pro. */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&display=swap');
+
+:root {
+  /* Marke */
+  --background-brand: #5656a4; --background-brand-strong: #1e125b;
+  --background-brand-light: #d6daff; --background-brand-pale: #ebedff;
+  --text-brand: #5656a4; --text-brand-strong: #1e125b; --text-highlight: #cc2900;
+  --border-brand: #5656a4;
+  /* Text */
+  --text-primary: #121419; --text-secondary: #5e6166; --text-placeholder: #808389;
+  --text-disabled: #b5b9bf; --text-read-only: #34363b; --text-on-color: #ffffff;
+  /* Flächen */
+  --background-default: #ffffff; --background-muted: #f3f7fd; --background-deep: #ebeef5;
+  --background-strong: #e2e6ec; --background-dark: #34363b; --background-darkest: #121419;
+  --background-overlay: rgb(18 0 69 / 0.8);
+  /* Rahmen */
+  --border-subtle: #e2e6ec; --border-muted: #d1d4da; --border-default: #c8cbd1;
+  --border-deep: #bfc2c8; --border-strong: #9ea2a7; --border-full: #515459; --border-disabled: #ebeef5; --border-read-only: #34363b;
+  /* Status: stark / weich */
+  --error: #ac2929; --error-soft: #ffb6ae;
+  --success: #017537; --success-soft: #6eff9b;
+  --warning: #656600; --warning-soft: #edef56;
+  --focus: #0f62fe;
+
+  /* Typografie */
+  --font-family: "Fira Sans", sans-serif;
+  --font-weight-regular: 400; --font-weight-medium: 500;
+  --font-size-display-1: 64px; --font-size-display-2: 56px;
+  --font-size-heading-1: 48px; --font-size-heading-2: 40px; --font-size-heading-3: 36px;
+  --font-size-heading-4: 28px; --font-size-heading-5: 22px; --font-size-heading-6: 20px;
+  --font-size-lead: 22px; --font-size-body: 18px; --font-size-small: 16px;
+  --font-size-label: 16px; --font-size-input: 16px; --font-size-button: 16px; --font-size-support: 12px;
+
+  /* Abstände (XL, siehe Media Queries) */
+  --spacing-5xs: 2px; --spacing-4xs: 4px; --spacing-3xs: 6px; --spacing-2xs: 8px;
+  --spacing-xs: 12px; --spacing-sm: 16px; --spacing-md: 20px; --spacing-lg: 24px;
+  --spacing-xl: 32px; --spacing-2xl: 40px; --spacing-3xl: 48px; --spacing-4xl: 56px;
+  --spacing-5xl: 64px; --spacing-6xl: 72px; --spacing-7xl: 80px; --spacing-8xl: 88px;
+  --spacing-9xl: 96px; --spacing-10xl: 120px;
+  --grid-columns: 12; --grid-gutter: 48px; --grid-offset: 40px;
+
+  /* Formen */
+  --radius-button: 2px; --radius-field: 0px; --radius-focus: 2px;
+  --border-width: 1px; --border-width-active: 2px; --focus-width: 2px;
+  --control-height: 48px;
+}
+
+/* Breakpoints (Grenzen angenommen aus Gerätebreiten 1440/1024/834/390) */
+@media (max-width: 1279px) { :root {
+  --spacing-3xs: 4px; --spacing-sm: 12px; --spacing-md: 16px; --spacing-lg: 20px; --spacing-xl: 24px;
+  --spacing-2xl: 32px; --spacing-3xl: 40px; --spacing-4xl: 48px; --spacing-5xl: 56px; --spacing-6xl: 64px;
+  --spacing-7xl: 64px; --spacing-8xl: 72px; --spacing-9xl: 88px; --spacing-10xl: 96px; --grid-gutter: 32px; } }
+@media (max-width: 1023px) { :root {
+  --spacing-sm: 16px; --spacing-md: 20px; --spacing-lg: 24px; --spacing-xl: 32px; --spacing-2xl: 40px;
+  --spacing-3xl: 48px; --spacing-5xl: 48px; --spacing-6xl: 48px; --spacing-7xl: 56px; --spacing-8xl: 88px;
+  --spacing-9xl: 64px; --spacing-10xl: 88px; --grid-gutter: 28px; --grid-offset: 32px; } }
+@media (max-width: 767px) { :root {
+  --spacing-2xs: 4px; --spacing-xs: 8px; --spacing-sm: 8px; --spacing-md: 16px; --spacing-lg: 20px;
+  --spacing-xl: 24px; --spacing-2xl: 24px; --spacing-3xl: 28px; --spacing-4xl: 40px; --spacing-5xl: 32px;
+  --spacing-6xl: 40px; --spacing-7xl: 48px; --spacing-8xl: 56px; --spacing-9xl: 56px; --spacing-10xl: 56px;
+  --grid-gutter: 16px; --grid-offset: 20px;
+  --font-size-display-1: 36px; --font-size-display-2: 32px; --font-size-heading-1: 36px;
+  --font-size-heading-2: 28px; --font-size-heading-3: 24px; --font-size-heading-4: 24px;
+  --font-size-heading-5: 20px; --font-size-heading-6: 18px; --font-size-lead: 20px; --font-size-support: 14px; } }
